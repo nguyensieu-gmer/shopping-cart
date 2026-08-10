@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ShopItem } from "../shop-item/ShopItem";
+import styles from "./Shop.module.css";
 
 // product's example
 /*
@@ -65,7 +66,7 @@ export function Shop() {
 
   return (
     <div>
-      <ul>
+      <ul className={styles.list}>
         {data && data.map((item) => <ShopItem key={item.id} item={item} />)}
       </ul>
     </div>
