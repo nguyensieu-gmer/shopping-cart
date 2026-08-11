@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ShopItem } from "../shop-item/ShopItem";
 import styles from "./Shop.module.css";
+import { useOutletContext } from "react-router";
 
 // product's example
 /*
@@ -24,51 +25,55 @@ const fetchShopData = async (url, signal = null) => {
   return response.json();
 };
 
-const useShopData = () => {
-  const [data, setData] = useState(null);
+const useShopData = ({ products, setProducts }) => {
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (products) return;
     const controller = new AbortController();
 
     const fetchDataForShop = async () => {
       try {
-        const res = await fetchShopData("https://fakestoreapi.com/products");
-        setData(res);
+        const res = await fetchShopData(
+          "https://fakestoreapi.com/products",
+          controller.signal,
+        );
+        setProducts(res);
         setError(null);
       } catch (e) {
         if (e.name === "AbortError") {
-          setError(e.name);
-        } else {
-          setError(e.message);
+          return;
         }
-        setData(null);
-      } finally {
-        setLoading(false);
+        setError(e.message);
+        setProducts(null);
       }
     };
 
     fetchDataForShop();
 
-    return controller.abort();
-  }, [setData, setLoading, setError, data]);
+    return () => controller.abort();
+  }, [products, setProducts]);
 
-  return { data, error, loading };
+  return { error };
 };
 
 export function Shop() {
-  let { data, error, loading } = useShopData();
+  const { products, setProducts } = useOutletContext();
+  const { error } = useShopData({ products, setProducts });
 
-  if (loading) return <h1>Loading...</h1>;
-
-  if (error) return <h1>{error}</h1>;
+  if (error) return <h1>Error: {error}</h1>;
 
   return (
     <div>
-      <ul className={styles.list}>
-        {data && data.map((item) => <ShopItem key={item.id} item={item} />)}
-      </ul>
+      {products ? (
+        <ul className={styles.list}>
+          {products.map((item) => (
+            <ShopItem key={item.id} item={item} />
+          ))}
+        </ul>
+      ) : (
+        <h1>Loading...</h1>
+      )}
     </div>
   );
 }
