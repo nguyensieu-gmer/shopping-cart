@@ -2,7 +2,11 @@ import icon from "../assets/store_icon.png";
 import { Link } from "react-router";
 import styles from "./NavBar.module.css";
 
-export function NavBar() {
+export function NavBar({ cartProducts }) {
+  const totalProduct = cartProducts.reduce(
+    (acc, current) => acc + current.quantity,
+    0,
+  );
   return (
     <div className={styles.nav_bar}>
       <div className={styles.logo_section}>
@@ -12,7 +16,10 @@ export function NavBar() {
       <div className={styles.links}>
         <Link to="home">Home</Link>
         <Link to="shop">Shop</Link>
-        <Link to="cart">Cart</Link>
+        <div>
+          <Link to="cart">Cart</Link>
+          <span>{totalProduct === 0 ? "" : totalProduct}</span>
+        </div>
       </div>
     </div>
   );
