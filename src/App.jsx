@@ -4,10 +4,13 @@ import { useState } from "react";
 
 export function App() {
   const [products, setProducts] = useState(null);
+  const [cartProducts, setCartProducts] = useState([]);
   return (
     <div>
-      <NavBar />
-      <Outlet context={{ products, setProducts }} />
+      <NavBar cartProducts={cartProducts} />
+      <Outlet
+        context={{ products, setProducts, cartProducts, setCartProducts }}
+      />
     </div>
   );
 }
