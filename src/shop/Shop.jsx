@@ -65,6 +65,7 @@ export function Shop() {
 
   return (
     <div>
+      <h1>Shop</h1>
       {products ? (
         <ul className={styles.list}>
           {products.map((item) => (
