@@ -1,10 +1,9 @@
 import { Shop } from "./shop/Shop";
 import { Cart } from "./cart/Cart";
-import { createBrowserRouter } from "react-router";
 import { App } from "./App";
 import { Home } from "./home/Home";
 
-const routes = createBrowserRouter([
+const routes = [
   {
     path: "/",
     element: <App />,
@@ -27,6 +26,6 @@ const routes = createBrowserRouter([
       },
     ],
   },
-]);
+];
 
 export default routes;
