@@ -22,6 +22,16 @@ const product1Item = [
   },
 ];
 
+const product2Items = [
+  {
+    id: 2,
+    title: "Backpack",
+    price: 100,
+    image: "test.jpg",
+    quantity: 2,
+  },
+];
+
 function TestWrapper({ product }) {
   const [cartProducts, setCartProducts] = useState(product);
   return <Outlet context={{ cartProducts, setCartProducts }} />;
@@ -63,8 +73,6 @@ describe("Cart testing", () => {
 
     render(<RouterProvider router={router} />);
 
-    screen.debug();
-
     expect(screen.getByText("Backpack")).toBeInTheDocument();
     expect(screen.getByText("T-Shirt")).toBeInTheDocument();
     expect(screen.getByText("Subtotal: 250.00$")).toBeInTheDocument();
@@ -98,5 +106,47 @@ describe("Cart testing", () => {
     await user.click(button1);
 
     expect(screen.queryByText("T-Shirt")).not.toBeInTheDocument();
+  });
+
+  it("test increaing and decreasing quantity of product", async () => {
+    const user = userEvent.setup();
+    const router = createMemoryRouter(
+      [
+        {
+          path: "/",
+          element: <TestWrapper product={product2Items} />,
+          children: [
+            {
+              path: "cart",
+              element: <Cart />,
+            },
+          ],
+        },
+      ],
+      { initialEntries: ["/cart"] },
+    );
+
+    render(<RouterProvider router={router} />);
+
+    const increaseBTN = screen.getByRole("button", {
+      name: "increase quantity of product",
+    });
+    const decreaseBTN = screen.getByRole("button", {
+      name: "decrease quantity of product",
+    });
+
+    await user.click(increaseBTN);
+
+    expect(screen.getByLabelText("3 products in cart")).toHaveTextContent("3");
+
+    await user.click(decreaseBTN);
+
+    expect(screen.getByLabelText("2 products in cart")).toBeInTheDocument();
+
+    await user.click(decreaseBTN);
+
+    expect(
+      screen.getByRole("button", { name: "remove product out of cart" }),
+    ).toBeInTheDocument();
   });
 });
