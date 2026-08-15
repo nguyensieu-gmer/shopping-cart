@@ -41,24 +41,37 @@ export function ShopItem({ item }) {
   return (
     <li className={styles.list}>
       <img src={image} alt={category} />
-      <h2>{title}</h2>
-      <h1>{price}$</h1>
+      <h2 aria-label={`Name of product is ${title}`}>{title}</h2>
+      <h1 aria-label={`Price of product is ${price} dollars`}>{price}$</h1>
       {product === undefined ? (
         <button onClick={handleAddproductIntoCart}>Add to cart</button>
       ) : (
         <div>
           {product.quantity === 1 ? (
-            <button onClick={hanleDeleteProduct}>
-              <i className="ri-delete-bin-line"></i>
+            <button
+              aria-label="remove product out of cart"
+              onClick={hanleDeleteProduct}
+            >
+              <i aria-hidden="true" className="ri-delete-bin-line"></i>
             </button>
           ) : (
-            <button onClick={decreaseProductQuantity}>
-              <i className="ri-subtract-line"></i>
+            <button
+              aria-label="decrease quantity"
+              onClick={decreaseProductQuantity}
+            >
+              <i aria-hidden="true" className="ri-subtract-line"></i>
             </button>
           )}
-          <p>{product.quantity}</p>
-          <button onClick={increaseProductQuantity}>
-            <i className="ri-add-line"></i>
+          <p
+            aria-label={`Quantity of products in out cart is ${product.quantity}`}
+          >
+            {product.quantity}
+          </p>
+          <button
+            aria-label="increase quantity"
+            onClick={increaseProductQuantity}
+          >
+            <i aria-hidden="true" className="ri-add-line"></i>
           </button>
         </div>
       )}

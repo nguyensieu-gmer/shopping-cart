@@ -30,24 +30,41 @@ export function CartItem({ item }) {
 
   return (
     <li className={styles.cartItem}>
-      <img src={item.image} alt="cart's product" />
+      <img src={item.image} alt={item.category} />
       <p>{item.title}</p>
       <div className={styles.fineTunning}>
         {item.quantity === 1 ? (
-          <button onClick={hanleDeleteProduct}>
-            <i className="ri-delete-bin-line"></i>
+          <button
+            aria-label="remove product out of cart"
+            onClick={hanleDeleteProduct}
+          >
+            <i aria-hidden="true" className="ri-delete-bin-line"></i>
           </button>
         ) : (
-          <button onClick={decreaseProductQuantity}>
-            <i className="ri-subtract-line"></i>
+          <button
+            aria-label="decrease quantity of product"
+            onClick={decreaseProductQuantity}
+          >
+            <i aria-hidden="true" className="ri-subtract-line"></i>
           </button>
         )}
-        <p>{item.quantity}</p>
-        <button onClick={increaseProductQuantity}>
-          <i className="ri-add-line"></i>
+        <p
+          aria-label={`${item.quantity} product${item.quantity > 1 ? "s" : ""} in cart`}
+        >
+          {item.quantity}
+        </p>
+        <button
+          aria-label="increase quantity of product"
+          onClick={increaseProductQuantity}
+        >
+          <i aria-hidden="true" className="ri-add-line"></i>
         </button>
       </div>
-      <p>{Number(item.price) * Number(item.quantity)}$</p>
+      <p
+        aria-label={`Price ${Number(item.price) * Number(item.quantity)} dollars`}
+      >
+        {Number(item.price) * Number(item.quantity)}$
+      </p>
     </li>
   );
 }

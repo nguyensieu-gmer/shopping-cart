@@ -10,7 +10,7 @@ export function NavBar({ cartProducts }) {
   return (
     <div className={styles.nav_bar}>
       <div className={styles.logo_section}>
-        <img src={icon} alt="store's icon" />
+        <img aria-hidden="true" src={icon} alt="store's icon" />
         <h1>Shopee</h1>
       </div>
       <div className={styles.links}>
