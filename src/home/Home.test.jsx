@@ -1,26 +1,13 @@
-import { vi, describe, it, expect } from "vitest";
+import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { createMemoryRouter, MemoryRouter, RouterProvider } from "react-router";
 import { Home } from "./Home";
-import routes from "../Routes";
+import { App } from "../App";
 
-window.fetch = vi.fn(() => {
-  const user = [
-    {
-      category: "men's clothing",
-      description:
-        "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-      id: 1,
-      image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-      price: 109.95,
-      rating: { count: 120, rate: 3.9 },
-      title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-    },
-  ];
-
-  return Promise.resolve({ ok: true, json: () => Promise.resolve(user) });
-});
+function ShopTest() {
+  return <h1>Shop</h1>;
+}
 
 describe("Home Testing", () => {
   it("UI testing", () => {
@@ -35,7 +22,24 @@ describe("Home Testing", () => {
   });
   it("routing test", async () => {
     const user = userEvent.setup();
-    const router = createMemoryRouter(routes, { initialEntries: ["/home"] });
+    const router = createMemoryRouter(
+      [
+        {
+          path: "/",
+          element: <App />,
+          children: [
+            { path: "home", element: <Home /> },
+            {
+              path: "shop",
+              element: <ShopTest />,
+            },
+          ],
+        },
+      ],
+      {
+        initialEntries: ["/home"],
+      },
+    );
 
     render(<RouterProvider router={router} />);
 
