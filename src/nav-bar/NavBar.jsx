@@ -17,8 +17,12 @@ export function NavBar({ cartProducts }) {
         <Link to="home">Home</Link>
         <Link to="shop">Shop</Link>
         <div>
-          <Link to="cart">Cart</Link>
-          <span>{totalProduct === 0 ? "" : totalProduct}</span>
+          <Link data-testid="cart_link" to="cart">
+            Cart
+          </Link>
+          <span aria-label={`Quantity of products in cart is ${totalProduct}`}>
+            {totalProduct === 0 ? "" : totalProduct}
+          </span>
         </div>
       </div>
     </div>
