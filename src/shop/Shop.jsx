@@ -72,7 +72,7 @@ export function Shop() {
           ))}
         </ul>
       ) : (
-        <h1>Loading...</h1>
+        <h1 data-testid="loading_state">Loading...</h1>
       )}
     </div>
   );
