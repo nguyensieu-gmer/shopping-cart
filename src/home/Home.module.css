@@ -14,7 +14,7 @@
 
 .link {
   text-decoration: none;
-  color: #d4df9e;
+  color: white;
 }
 
 .link_container {
@@ -23,6 +23,10 @@
   align-items: center;
   width: 8rem;
   height: 3rem;
-  background-color: #6b654b;
+  background-color: #ff421b;
   border-radius: 50px;
+}
+
+.link_container:hover {
+  background-color: #fc864f;
 }
