@@ -39,42 +39,59 @@ export function ShopItem({ item }) {
   }
 
   return (
-    <li className={styles.list}>
-      <img src={image} alt={category} />
-      <h2 aria-label={`Name of product is ${title}`}>{title}</h2>
-      <h1 aria-label={`Price of product is ${price} dollars`}>{price}$</h1>
-      {product === undefined ? (
-        <button onClick={handleAddproductIntoCart}>Add to cart</button>
-      ) : (
-        <div>
-          {product.quantity === 1 ? (
+    <li className={styles.list_item}>
+      <div className={styles.img_container}>
+        <img className={styles.img} src={image} alt={category} />
+      </div>
+      <div className={styles.content_container}>
+        <div className={styles.infor_area}>
+          <p aria-label={`Name of product is ${title}`}>{title}</p>
+          <h3 aria-label={`Price of product is ${price} dollars`}>{price}$</h3>
+        </div>
+        <div className={styles.btns}>
+          {product === undefined ? (
             <button
-              aria-label="remove product out of cart"
-              onClick={hanleDeleteProduct}
+              className={styles.add_to_cart_btn}
+              onClick={handleAddproductIntoCart}
             >
-              <i aria-hidden="true" className="ri-delete-bin-line"></i>
+              Add to cart
             </button>
           ) : (
-            <button
-              aria-label="decrease quantity"
-              onClick={decreaseProductQuantity}
-            >
-              <i aria-hidden="true" className="ri-subtract-line"></i>
-            </button>
+            <div className={styles.fine_tune_area}>
+              {product.quantity === 1 ? (
+                <button
+                  aria-label="remove product out of cart"
+                  onClick={hanleDeleteProduct}
+                  className={styles.fine_tune_btn}
+                >
+                  <i aria-hidden="true" className="ri-delete-bin-line"></i>
+                </button>
+              ) : (
+                <button
+                  className={styles.fine_tune_btn}
+                  aria-label="decrease quantity"
+                  onClick={decreaseProductQuantity}
+                >
+                  <i aria-hidden="true" className="ri-subtract-line"></i>
+                </button>
+              )}
+              <p
+                className={styles.quantity}
+                aria-label={`Quantity of products in out cart is ${product.quantity}`}
+              >
+                {product.quantity}
+              </p>
+              <button
+                className={styles.fine_tune_btn}
+                aria-label="increase quantity"
+                onClick={increaseProductQuantity}
+              >
+                <i aria-hidden="true" className="ri-add-line"></i>
+              </button>
+            </div>
           )}
-          <p
-            aria-label={`Quantity of products in out cart is ${product.quantity}`}
-          >
-            {product.quantity}
-          </p>
-          <button
-            aria-label="increase quantity"
-            onClick={increaseProductQuantity}
-          >
-            <i aria-hidden="true" className="ri-add-line"></i>
-          </button>
         </div>
-      )}
+      </div>
     </li>
   );
 }
