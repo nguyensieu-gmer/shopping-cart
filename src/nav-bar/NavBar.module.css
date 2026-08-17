@@ -13,7 +13,12 @@
 
 .link {
   text-decoration: none;
-  color: #6b654b;
+  color: black;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: #fc864f;
 }
 
 .links {
