@@ -2,18 +2,7 @@ import { useEffect, useState } from "react";
 import { ShopItem } from "../shop-item/ShopItem";
 import styles from "./Shop.module.css";
 import { useOutletContext } from "react-router";
-
-// product's example
-/*
-  category: "men's clothing",
-  description:
-    "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-  id: 1,
-  image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-  price: 109.95,
-  rating: { count: 120, rate: 3.9 },
-  title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-*/
+import { ShopError } from "../shop-error-component/ShopError";
 
 const fetchShopData = async (url, signal = null) => {
   const response = await fetch(url, { signal });
@@ -61,7 +50,7 @@ export function Shop() {
   const { products, setProducts } = useOutletContext();
   const { error } = useShopData({ products, setProducts });
 
-  if (error) return <h1>Error: {error}</h1>;
+  if (error) return <ShopError error={error} />;
 
   return (
     <div>
