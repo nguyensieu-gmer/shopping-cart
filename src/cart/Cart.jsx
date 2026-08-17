@@ -22,9 +22,11 @@ export function Cart() {
       </div>
     </div>
   ) : (
-    <div>
-      <h1>Your cart empty now</h1>
-      <p>Add something to get started</p>
+    <div className={styles.empty}>
+      <div className={styles.cart_empty_content}>
+        <h1>Your cart empty now</h1>
+        <p>Add something to get started</p>
+      </div>
     </div>
   );
 }
