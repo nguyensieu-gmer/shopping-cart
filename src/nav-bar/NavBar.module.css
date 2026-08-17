@@ -1,17 +1,46 @@
 .nav_bar {
   display: flex;
   justify-content: space-between;
-  margin: 0 0.3rem;
+  padding: 0 1rem;
   border-bottom: 1px solid black;
 }
 
 .logo_section {
   display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.link {
+  text-decoration: none;
+  color: #6b654b;
 }
 
 .links {
   display: flex;
-  gap: 1rem;
+  align-items: center;
+  gap: 2rem;
   font-size: 2rem;
   align-self: center;
+  margin-right: 1.3rem;
+}
+
+.cart_link {
+  position: relative;
+  top: 1rem;
+}
+
+.quantity {
+  position: absolute;
+  padding: 0.3rem;
+  font-size: 1rem;
+  background-color: rgba(250, 128, 114, 0.466);
+  border-radius: 50%;
+  bottom: 0.5rem;
+  left: 1.2rem;
+}
+
+.icon_image {
+  height: 3rem;
+  width: auto;
 }

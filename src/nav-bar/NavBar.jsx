@@ -10,19 +10,32 @@ export function NavBar({ cartProducts }) {
   return (
     <div className={styles.nav_bar}>
       <div className={styles.logo_section}>
-        <img aria-hidden="true" src={icon} alt="store's icon" />
+        <img
+          className={styles.icon_image}
+          aria-hidden="true"
+          src={icon}
+          alt="store's icon"
+        />
         <h1>Shopee</h1>
       </div>
       <div className={styles.links}>
-        <Link to="home">Home</Link>
-        <Link to="shop">Shop</Link>
-        <div>
-          <Link data-testid="cart_link" to="cart">
-            Cart
+        <Link className={styles.link} to="home">
+          Home
+        </Link>
+        <Link className={styles.link} to="shop">
+          Shop
+        </Link>
+        <div className={styles.cart_link}>
+          <Link className={styles.link} data-testid="cart_link" to="cart">
+            <i className="ri-shopping-cart-2-line"></i>
           </Link>
-          <span aria-label={`Quantity of products in cart is ${totalProduct}`}>
+
+          <p
+            className={totalProduct > 0 && styles.quantity}
+            aria-label={`Quantity of products in cart is ${totalProduct}`}
+          >
             {totalProduct === 0 ? "" : totalProduct}
-          </span>
+          </p>
         </div>
       </div>
     </div>
