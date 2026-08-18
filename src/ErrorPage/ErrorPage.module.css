@@ -1,0 +1,22 @@
+.error_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+  height: 80vh;
+}
+
+.error_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.link {
+  font-size: x-large;
+}
+
+.error_title {
+  text-align: center;
+}
