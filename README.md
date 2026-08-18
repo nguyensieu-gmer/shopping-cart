@@ -22,3 +22,7 @@ If you are developing a production application, we recommend using TypeScript wi
 # Demo video
 
 ![Demo](./src/assets/shopping_cart_demo.mov)
+
+# Link Preview
+
+https://shoppingcartsieu.netlify.app/
