@@ -3,12 +3,16 @@
   display: flex;
   flex-direction: column;
   padding: 0;
+  margin-top: 1rem;
+  gap: 1rem;
 }
 
 .cartContainer {
   display: flex;
   justify-content: space-between;
-  padding: 0 2rem;
+  padding: 0 3rem;
+  gap: 3rem;
+  align-self: center;
 }
 
 .empty {
@@ -24,4 +28,34 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.total_price {
+  display: flex;
+  flex-direction: column;
+  border: 0.5px solid gray;
+  border-radius: 10px;
+  height: fit-content;
+  padding: 1rem 2rem;
+  margin-top: 1rem;
+  width: 20rem;
+  gap: 2rem;
+}
+
+@media (width <= 1300px) {
+  .cartContainer {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 2rem;
+  }
+  .total_price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: x-small;
+    height: 4rem;
+    padding: 1rem 1rem;
+  }
 }
