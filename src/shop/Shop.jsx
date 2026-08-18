@@ -3,6 +3,7 @@ import { ShopItem } from "../shop-item/ShopItem";
 import styles from "./Shop.module.css";
 import { useOutletContext } from "react-router";
 import { ShopError } from "../shop-error-component/ShopError";
+import { Loading } from "../Loading/Loading";
 
 const fetchShopData = async (url, signal = null) => {
   const response = await fetch(url, { signal });
@@ -61,7 +62,7 @@ export function Shop() {
           ))}
         </ul>
       ) : (
-        <h1 data-testid="loading_state">Loading...</h1>
+        <Loading />
       )}
     </div>
   );
