@@ -46,7 +46,12 @@ export function ShopItem({ item }) {
       <div className={styles.content_container}>
         <div className={styles.infor_area}>
           <p aria-label={`Name of product is ${title}`}>{title}</p>
-          <h3 aria-label={`Price of product is ${price} dollars`}>{price}$</h3>
+          <p
+            className={styles.price_label}
+            aria-label={`Price of product is ${price} dollars`}
+          >
+            {price}$
+          </p>
         </div>
         <div className={styles.btns}>
           {product === undefined ? (
