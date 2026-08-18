@@ -10,6 +10,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
+}
+
+.title {
+  text-align: center;
 }
 
 .link {
@@ -29,4 +34,13 @@
 
 .link_container:hover {
   background-color: #fc864f;
+}
+
+@media (width <= 750px) {
+  .link {
+    font-size: small;
+  }
+  .title {
+    font-size: medium;
+  }
 }

@@ -5,7 +5,9 @@ export function Home() {
   return (
     <div className={styles.home_container}>
       <div className={styles.home_content}>
-        <h1>Hi there! What are you looking for today?</h1>
+        <h1 className={styles.title}>
+          Hi there! What are you looking for today?
+        </h1>
         <div className={styles.link_container}>
           <Link className={styles.link} to="/shop">
             Shop Now
