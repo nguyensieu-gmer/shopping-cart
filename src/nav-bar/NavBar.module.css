@@ -4,6 +4,7 @@
   justify-content: space-between;
   padding: 0 1rem;
   border-bottom: 0.5px solid rgb(113, 112, 112);
+  height: 4rem;
 }
 
 .logo_section {
@@ -33,7 +34,7 @@
 
 .quantity {
   position: absolute;
-  padding: 0.3rem;
+  padding: 0.1rem 0.4rem;
   font-size: 0.7rem;
   font-weight: bold;
   background-color: rgba(250, 128, 114, 0.466);
@@ -45,4 +46,26 @@
 .icon_image {
   height: 3rem;
   width: auto;
+}
+
+@media (width <= 700px) {
+  .nav_bar {
+    font-size: x-small;
+  }
+  .link {
+    font-size: smaller;
+  }
+}
+
+@media (width <= 500px) {
+  .link {
+    font-size: 1rem;
+  }
+  .nav_bar {
+    margin: 0;
+    padding: 0;
+  }
+  .quantity {
+    right: 0rem;
+  }
 }

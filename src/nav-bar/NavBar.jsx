@@ -31,7 +31,7 @@ export function NavBar({ cartProducts }) {
           </Link>
 
           <p
-            className={styles.quantity}
+            className={totalProduct > 0 && styles.quantity}
             aria-label={`Quantity of products in cart is ${totalProduct}`}
           >
             {totalProduct === 0 ? "" : totalProduct}
