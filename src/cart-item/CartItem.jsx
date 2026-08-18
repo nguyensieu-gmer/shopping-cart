@@ -68,7 +68,7 @@ export function CartItem({ item }) {
       <p
         aria-label={`Price ${Number(item.price) * Number(item.quantity)} dollars`}
       >
-        {Number(item.price) * Number(item.quantity)}$
+        {(Number(item.price) * Number(item.quantity)).toFixed(2)}$
       </p>
     </li>
   );
