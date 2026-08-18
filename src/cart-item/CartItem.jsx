@@ -30,11 +30,14 @@ export function CartItem({ item }) {
 
   return (
     <li className={styles.cartItem}>
-      <img src={item.image} alt={item.category} />
-      <p>{item.title}</p>
+      <div className={styles.img_container}>
+        <img className={styles.image} src={item.image} alt={item.category} />
+      </div>
+      <p className={styles.title}>{item.title}</p>
       <div className={styles.fineTunning}>
         {item.quantity === 1 ? (
           <button
+            className={styles.fine_tune_btn}
             aria-label="remove product out of cart"
             onClick={hanleDeleteProduct}
           >
@@ -42,6 +45,7 @@ export function CartItem({ item }) {
           </button>
         ) : (
           <button
+            className={styles.fine_tune_btn}
             aria-label="decrease quantity of product"
             onClick={decreaseProductQuantity}
           >
@@ -54,6 +58,7 @@ export function CartItem({ item }) {
           {item.quantity}
         </p>
         <button
+          className={styles.fine_tune_btn}
           aria-label="increase quantity of product"
           onClick={increaseProductQuantity}
         >
