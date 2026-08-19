@@ -33,7 +33,7 @@ describe("Test Shop component", () => {
     );
 
     render(<RouterProvider router={route} />);
-    screen.debug();
+
     expect(
       screen.getByLabelText("Name of product is Backpack"),
     ).toBeInTheDocument();

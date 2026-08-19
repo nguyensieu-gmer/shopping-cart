@@ -26,12 +26,12 @@ export function NavBar({ cartProducts }) {
           Shop
         </Link>
         <div className={styles.cart_link}>
-          <Link className={styles.link} data-testid="cart_link" to="cart">
+          <Link className={styles.link} aria-label="Cart" to="cart">
             <i className="ri-shopping-cart-2-line"></i>
           </Link>
 
           <p
-            className={totalProduct > 0 && styles.quantity}
+            className={totalProduct > 0 ? styles.quantity : undefined}
             aria-label={`Quantity of products in cart is ${totalProduct}`}
           >
             {totalProduct === 0 ? "" : totalProduct}

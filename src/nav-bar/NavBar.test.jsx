@@ -72,7 +72,7 @@ describe("NavBar component test", () => {
 
     const homeLink = screen.getByRole("link", { name: "Home" });
     const shopLink = screen.getByRole("link", { name: "Shop" });
-    const cartLink = screen.getByTestId("cart_link");
+    const cartLink = screen.getByRole("link", { name: "Cart" });
 
     await user.click(cartLink);
 

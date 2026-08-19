@@ -75,7 +75,7 @@ describe("Cart testing", () => {
 
     expect(screen.getByText("Backpack")).toBeInTheDocument();
     expect(screen.getByText("T-Shirt")).toBeInTheDocument();
-    expect(screen.getByText("Subtotal: 250.00$")).toBeInTheDocument();
+    expect(screen.getByText("Subtotal: 250$")).toBeInTheDocument();
     expect(screen.getByText("Shipping: 0$")).toBeInTheDocument();
     expect(screen.getByText("total: 250$")).toBeInTheDocument();
   });

@@ -16,9 +16,11 @@ export function Cart() {
         ))}
       </ul>
       <div className={styles.total_price}>
-        <p>Subtotal: {subTotal.toFixed(2)}$</p>
-        <p>Shipping: {shipping}$</p>
-        <p>total: {(Number(subTotal) + Number(shipping)).toFixed(2)}$</p>
+        <p>Subtotal: {Number(subTotal.toFixed(2))}$</p>
+        <p>Shipping: {Number(shipping.toFixed(2))}$</p>
+        <p>
+          total: {Number((Number(subTotal) + Number(shipping)).toFixed(2))}$
+        </p>
       </div>
     </div>
   ) : (
